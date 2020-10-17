@@ -39,13 +39,48 @@ let multipliedCaracter = (content, multiplier) => {
     !multiplier.isNan &&
     Math.sign(multiplier) == 1
   ) {
-    while (0 < multiplier){
-        multiplier--;
-        console.log(content);
+    while (0 < multiplier) {
+      multiplier--;
+      console.log(content);
     }
   } else {
     console.error("Caracteres no válidos.");
   }
 };
 multipliedCaracter("Ejercicio 3", 3);
-multipliedCaracter(myObjet, "s");
+//multipliedCaracter(myObjet, "s");
+
+//5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+let invert = (myWord = "test") => {
+  let result = "";
+  for (let index = myWord.length; index >= 0; index--) {
+    result += myWord.substring(index - 1, index);
+  }
+  return result;
+};
+console.log(invert("Esto es un hola mundo"));
+//6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+let countStrings = (myWord = "", search = "") => {
+  let count = 0;
+  myWord.split(" ").forEach((element) => {
+    if (element.includes(search)) {
+      count++;
+    }
+  });
+  console.log(count);
+};
+countStrings("Nelson bueno dice que es bueno.", "bueno");
+//7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+
+let testInvertString = (myString = "") =>
+  console.log(myString.toUpperCase() == invert(myString.toUpperCase()));
+
+testInvertString("Salas");
+testInvertString("Salitas");
+
+//8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
+let removePatrons = (myString = "", patron = "") => {
+  let regularExpression = new RegExp(patron, 'gi');
+  console.log(myString.replace(regularExpression, ""));
+};
+removePatrons("Esto es esto un y esto más esto.", "esto");
